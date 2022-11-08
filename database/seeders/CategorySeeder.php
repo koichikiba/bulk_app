@@ -33,6 +33,9 @@ class CategorySeeder extends Seeder
             'name' => '腕(上腕三頭筋)',
         ],
         [
+            'name' => '腹',
+        ],
+        [
             'name' => 'その他',
         ]];
         DB::table('categories')->insert($param);

@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+// use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -116,7 +117,7 @@ class PostController extends Controller
 
         return redirect()
             ->route('posts.show', $post)
-            ->with('notice', 'ワークアウトを更新しました');
+            ->with('notice', '内容を更新しました');
     }
 
     /**
@@ -144,11 +145,19 @@ class PostController extends Controller
 
         return redirect()
             ->route('posts.index')
-            ->with('notice', '記事を削除しました');
+            ->with('notice', 'データを削除しました');
     }
 
     public static function createFileName($file)
     {
-        return date('YmdHis') . '_' . $file->getClientOriginalName();
+        return date('Y/m/d') . '_' . $file->getClientOriginalName();
     }
+
+    // public function toArray($id)
+    // {
+    //     return [
+    //         'created_at' => (new Carbon($this->created_at))->toDateTimeString(),
+    //         'updated_at' => (new Carbon($this->updated_at))->toDateTimeString(),
+    //     ];
+    // }
 }

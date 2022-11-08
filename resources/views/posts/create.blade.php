@@ -8,8 +8,7 @@
         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data"
             class="rounded pt-3 pb-8 mb-4">
             @csrf
-
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="category">
                     部位
                 </label>
@@ -20,8 +19,18 @@
                         <label for="category{{ $category->id }}">{{ $category->name }}</label>
                     </div>
                 @endforeach
+            </div> --}}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="category">
+                    部位
+                </label>
+                <select name="category_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-pink-600 w-full py-2 px-3" required>
+                    <option disabled selected value="">選択してください</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" @if($category->id == old('category_id')) selected @endif>{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
-
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="event">
                     種目
