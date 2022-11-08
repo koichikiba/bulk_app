@@ -21,7 +21,6 @@
                             @auth
                                 <div>{{ Auth::user()->name }}</div>
                             @endauth
-                            
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +35,7 @@
 
                     <x-slot name="content">
                         <!-- Authentication -->
-                        @auth
+                        {{-- @auth
                             <x-dropdown-link :href="route('posts.create')">
                                 {{ __('Create Post') }}
                             </x-dropdown-link>
@@ -48,7 +47,7 @@
                                     {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
-                        @endauth
+                        @endauth --}}
                 </x-dropdown>
             </div>
 
@@ -86,17 +85,17 @@
 
                 <div class="mt-3 space-y-1">
                     <!-- Authentication -->
-                    <x-responsive-nav-link :href="route('posts.create')">
+                    {{-- <x-responsive-nav-link :href="route('posts.create')">
                             {{ __('Create Post') }}
-                    </x-responsive-nav-link>
-                    <form method="POST" action="{{ route('logout') }}">
+                    </x-responsive-nav-link> --}}
+                    {{-- <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <x-responsive-nav-link :href="route('logout')"
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
-                    </form>
+                    </form> --}}
                 </div>
             @endauth
         </div>
