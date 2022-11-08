@@ -20,8 +20,9 @@
                 @endforeach
             </div>
             {{ $posts->links() }}
+            <br>
             <form method="POST" action="{{ route('logout') }}"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 @csrf
                 <href="route('logout')"
                     onclick="event.preventDefault();

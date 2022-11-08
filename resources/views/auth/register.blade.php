@@ -1,5 +1,6 @@
 <x-guest-layout>
     <x-auth-card>
+        <h2 class="text-center font-medium text-gray-700 mb-4">新規登録</h2>
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
