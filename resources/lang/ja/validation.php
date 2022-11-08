@@ -127,5 +127,8 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
-    'attributes'           => [],
+    'attributes'           => [
+    'event' => '種目',
+    'menu' => 'メニュー',
+    ],
 ];

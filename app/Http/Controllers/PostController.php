@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
+use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -13,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::with('user')->latest()->Paginate(7);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -23,18 +28,38 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('posts.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $post = new Post($request->all());
+        $post->user_id = $request->user()->id;
+
+        // トランザクション開始
+        DB::beginTransaction();
+        try {
+            // 登録
+            $post->save();
+
+            // トランザクション終了(成功)
+            DB::commit();
+        } catch (\Exception $e) {
+            // トランザクション終了(失敗)
+            DB::rollback();
+            return back()->withInput()->withErrors($e->getMessage());
+        }
+
+        return redirect()
+            ->route('posts.show', $post)
+            ->with('notice', 'ワークアウトを登録しました');
     }
 
     /**
@@ -45,7 +70,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -56,19 +83,40 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PostRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->fill($request->all());
+
+        // トランザクション開始
+        DB::beginTransaction();
+        try {
+            // 更新
+            $post->save();
+
+            // トランザクション終了(成功)
+            DB::commit();
+        } catch (\Exception $e) {
+            // トランザクション終了(失敗)
+            DB::rollback();
+            return back()->withInput()->withErrors($e->getMessage());
+        }
+
+        return redirect()
+            ->route('posts.show', $post)
+            ->with('notice', 'ワークアウトを更新しました');
     }
 
     /**
@@ -79,6 +127,28 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        // トランザクション開始
+        DB::beginTransaction();
+        try {
+            $post->delete();
+
+            // トランザクション終了(成功)
+            DB::commit();
+        } catch (\Exception $e) {
+            // トランザクション終了(失敗)
+            DB::rollback();
+            return back()->withInput()->withErrors($e->getMessage());
+        }
+
+        return redirect()
+            ->route('posts.index')
+            ->with('notice', '記事を削除しました');
+    }
+
+    public static function createFileName($file)
+    {
+        return date('YmdHis') . '_' . $file->getClientOriginalName();
     }
 }
