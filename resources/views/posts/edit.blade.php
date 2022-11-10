@@ -49,7 +49,7 @@
                     required>{{ old('menu', $post->menu) }}</textarea>
             </div>
             <input type="submit" value="更新"
-                class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         </form>
     </div>
 </x-app-layout>

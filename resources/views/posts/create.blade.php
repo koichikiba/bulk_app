@@ -48,8 +48,21 @@
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
                     required>{{ old('menu') }}</textarea>
             </div>
+
+            {{-- <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="event">
+                    種目
+                </label>
+                <input type="text" name="event"
+                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    required placeholder="種目" value="{{ old('event') }}">
+            </div>
+
+            <p class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl">
+                {{ $post->category->weight }}&emsp;{{ $post->category->reps }}&emsp;{{ $post->category->memo }}</p> --}}
+
             <input type="submit" value="登録"
-                class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         </form>
     </div>
 </x-app-layout>
