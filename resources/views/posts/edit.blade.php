@@ -27,7 +27,7 @@
                 <select name="category_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-pink-600 w-full py-2 px-3" required>
                     <option disabled selected value="">選択してください</option>
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}" @if($category->id == old('category_id')) selected @endif>{{ $category->name }}</option>
+                        <option value="{{ $category->id }}" @if($category->id == old('category_id', $post->category_id)) selected @endif>{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
