@@ -26,7 +26,7 @@ class PostRequest extends FormRequest
     {
         return [
             'event' => 'required|string|max:50',
-            'menu' => 'required|string|max:2000',
+            'memo' => 'required|string|max:2000',
             'category_id' => 'required',
         ];
     }
@@ -35,7 +35,7 @@ class PostRequest extends FormRequest
     {
         return [
             'event' => '種目',
-            'menu' => 'メニュー',
+            'menu' => 'セット・重量・レップ',
             'category_id' => '部位'
         ];
     }

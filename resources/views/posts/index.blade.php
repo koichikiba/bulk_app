@@ -13,7 +13,7 @@
                     <article class="flex w-full px-4 text-xl text-gray-800 leading-normal">
                         <a href="{{ route('posts.show', $post) }}">
                             <p class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl">
-                                {{ \Carbon\Carbon::parse($post->created_at)->format('Y/m/d') }}&emsp;{{ $post->category->name }}</p>
+                                {{ \Carbon\Carbon::parse($post->created_at)->format('Y/m/d') }}&emsp;{{ $post->category->name }}&emsp;{{ $post->event }}</p>
                         </a>
                     </article>
                 @endforeach

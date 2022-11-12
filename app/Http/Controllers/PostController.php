@@ -7,7 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-// use Carbon\Carbon;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -72,6 +72,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $date = Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at)->format('Y-m-d');
 
         return view('posts.show', compact('post'));
     }

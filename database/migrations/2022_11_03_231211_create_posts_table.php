@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('event');
-            $table->text('menu');
+            $table->string('memo');
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')

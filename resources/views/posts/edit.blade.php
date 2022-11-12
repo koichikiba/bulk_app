@@ -31,6 +31,7 @@
                     @endforeach
                 </select>
             </div>
+
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="event">
                     種目
@@ -41,13 +42,16 @@
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm mb-2" for="menu">
-                    メニュー
+                <label class="block text-gray-700 text-sm mb-2" for="memo">
+                    セット・重量・レップ
                 </label>
-                <textarea name="menu" rows="10"
+                <textarea name="memo" rows="10"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required>{{ old('menu', $post->menu) }}</textarea>
+                    required>{{ old('memo', $post->memo) }}</textarea>
+                    {{-- class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    placeholder="メモ" value="{{ old('memo', $post->memo) }}"> --}}
             </div>
+
             <input type="submit" value="更新"
                 class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         </form>

@@ -11,7 +11,7 @@ class Post extends Model
 
     protected $fillable = [
         'event',
-        'menu',
+        'memo',
         'category_id'
     ];
 

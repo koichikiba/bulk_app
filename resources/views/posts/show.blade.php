@@ -6,12 +6,9 @@
 
         <article class="mb-2">
             <p class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl">
-                {{ \Carbon\Carbon::parse($post->created_at)->format('Y/m/d') }}&emsp;{{ $post->category->name }}</p>
-            <p class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl">
-                {{ $post->event }}</p>
-            <p class="text-gray-700 text-base">{!! nl2br(e($post->menu)) !!}</p>
-            {{-- <p class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl">
-                {{ $post->category->weight }}&emsp;{{ $post->category->reps }}&emsp;{{ $post->category->memo }}</p> --}}
+                {{ \Carbon\Carbon::parse($post->created_at)->format('Y/m/d') }}&emsp;{{ $post->event }}</p>
+            <p class="font-bold text-gray-900 text-base">セット・重量・レップ<br>
+            {!! nl2br(e($post->memo)) !!}</p>
         </article>
 
         <div class="flex flex-row text-center my-4">

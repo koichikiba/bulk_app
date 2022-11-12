@@ -8,18 +8,6 @@
         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data"
             class="rounded pt-3 pb-8 mb-4">
             @csrf
-            {{-- <div class="mb-4">
-                <label class="block text-gray-700 text-sm mb-2" for="category">
-                    部位
-                </label>
-                @foreach ($categories as $category)
-                    <div>
-                        <input type="radio" name="category_id" id="category{{ $category->id }}"
-                            value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'checked' : '' }}>
-                        <label for="category{{ $category->id }}">{{ $category->name }}</label>
-                    </div>
-                @endforeach
-            </div> --}}
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="category">
                     部位
@@ -40,14 +28,43 @@
                     required placeholder="種目" value="{{ old('event') }}">
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm mb-2" for="menu">
-                    メニュー
+            {{-- <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="weight">
+                    重量
                 </label>
-                <textarea name="menu" rows="10"
+                <input type="number" name="weight"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required>{{ old('menu') }}</textarea>
+                    required placeholder="重量" value="{{ old('weight') }}">
             </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="reps">
+                    レップ
+                </label>
+                <input type="number" name="reps"
+                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    required placeholder="レップ" value="{{ old('reps') }}">
+            </div> --}}
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="memo">
+                    セット・重量・レップ
+                </label>
+                <textarea name="memo" rows="10"
+                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    required>{{ old('memo') }}</textarea>
+                    {{-- class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    placeholder="メモ" value="{{ old('memo', $post->memo) }}"> --}}
+            </div>
+
+            {{-- <div class="mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="memo">
+                    メモ
+                </label>
+                <input type="text" name="memo"
+                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                    placeholder="メモ" value="{{ old('memo') }}">
+            </div> --}}
 
             {{-- <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="event">
